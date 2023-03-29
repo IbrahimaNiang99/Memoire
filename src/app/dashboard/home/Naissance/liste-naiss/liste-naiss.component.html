@@ -1,0 +1,62 @@
+<mat-card class="text-center" style="background-color: rgb(86, 170, 244);">
+  <span style="font-size: 30px; color: white;">Liste des actes de naissance</span>
+  <!--span style="font-size: 20px;"><strong>Année</strong> : {{dateDuJour| date:('yyyy')}}</span>
+  <span style="font-size: 20px;"><strong>Régistre N° :</strong> 001</span> -->
+</mat-card>
+
+  <div class=" mt-5 card-header card">
+    <div class="row">
+      <div class="col-md-4">
+        <input type="text" class="form-control" name="" id="" placeholder="Rechercher ici...">
+      </div>
+      <div class="col-md-3">
+      </div>
+      <div class="col-md-2 offset-2">
+        <a [routerLink]="['/home/naissance/declaration']" class="btn btn-grd-success"> <i class="fa fa-plus"></i>Nouvelle déclaration</a>
+      </div>
+    </div>
+  </div>
+  
+  <table class="table table-striped text-center">
+      <thead>
+      <tr >
+        <th hidden scope="col">#</th>
+        <th scope="col">N°</th>
+        <th scope="col">Régistre</th>
+        <th scope="col">Prénom & Nom</th>
+        <th scope="col">Date de naissance</th>
+        <th scope="col">Lieu de naissance</th>
+        <th scope="col">Père</th>
+        <th scope="col">Mère</th>
+        <th scope="col">Voir</th>
+        <th scope="col">Acte</th>
+        <th scope="col">Extrait</th>
+        <th scope="col">Bulletin</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let naiss of listeActe">
+        <th hidden scope="row">{{naiss.id}}</th>
+        <th>{{naiss.numeroActe}}</th>
+        <th>{{naiss.registre.annee}}</th>
+        <th>{{naiss.declare.prenom}} {{naiss.declare.nom}}</th>
+        <th>{{naiss.declare.dateNaissance | date:("dd/MM/yyyy")}}</th>
+        <th>{{naiss.declare.lieuNaissance}}</th>
+        <th>{{naiss.pere.prenom }} {{naiss.pere.nom}}</th>
+        <th>{{naiss.mere.prenom }} {{naiss.pere.nom}}</th>
+        <th>
+          <i class="fa fa-eye btn btn-info" (click)="details(naiss.id)"></i>
+        </th>
+        <th>
+            <i class="fa fa-file btn btn-primary"></i>
+        </th>
+        <th>
+            <i class="fa fa-file btn btn-primary"></i>
+        </th>
+        <th>
+            <i class="fa fa-file btn btn-primary"></i>
+        </th>
+      </tr>
+      
+      </tbody>
+  </table>

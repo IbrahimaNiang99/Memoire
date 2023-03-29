@@ -1,0 +1,52 @@
+<mat-card class="text-center" style="background-color: rgb(86, 170, 244);">
+  <span style="font-size: 30px; color: white;">Gestion des utilisateurs</span>
+  <!--span style="font-size: 20px;"><strong>Année</strong> : {{dateDuJour| date:('yyyy')}}</span>
+  <span style="font-size: 20px;"><strong>Régistre N° :</strong> 001</span> -->
+</mat-card>
+
+<div class=" mt-5 card-header card">
+  <div class="row">
+    <div class="col-md-4">
+      <input type="text" class="form-control" name="" id="" placeholder="Rechercher ici...">
+    </div>
+    <div class="col-md-3">
+    </div>
+    <div class="col-md-2 offset-2">
+      <a [routerLink]="['/home/utilisateur/add']" class="btn btn-grd-success"> <i class="fa fa-plus"></i>Nouvel utilisateur</a>
+    </div>
+  </div>
+</div>
+
+  <h4>Liste des utilisateurs</h4>
+  <table class="table table-striped text-center">
+    <thead>
+    <tr >
+      <th scope="col">#</th>
+      <th scope="col">Prénom</th>
+      <th scope="col">Nom</th>
+      <th scope="col">Email</th>
+      <th scope="col">Nom d'utilisateur</th>
+      <th scope="col">Fonction</th>
+      <th scope="col">Téléphone</th>
+      <th scope="col">Etat</th>
+      <th scope="col">Action</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+      <th scope="row">1</th>
+      <th>Ibrahima</th>
+      <th>Niang</th>
+      <th>niang031999@gmail.com</th>
+      <th>niang</th>
+      <th>Officier</th>
+      <th>770906538</th>
+      <th>Actif</th>
+      <th>
+        <i class="fa fa-edit btn btn-warning"></i>
+        <i class="fa fa-trash-o btn btn-danger"></i>
+      </th>
+    </tr>
+    </tbody>
+  </table>
+

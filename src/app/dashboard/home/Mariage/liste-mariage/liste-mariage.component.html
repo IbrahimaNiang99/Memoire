@@ -1,0 +1,54 @@
+<mat-card class="text-center" style="background-color: rgb(86, 170, 244);">
+    <span style="font-size: 30px; color: white;">Liste des actes de mariage</span>
+</mat-card>
+
+<div class=" mt-5 card-header card">
+    <div class="row">
+      <div class="col-md-4">
+        <input type="text" class="form-control" name="" id="" placeholder="Rechercher ici...">
+      </div>
+      <div class="col-md-3">
+      </div>
+      <div class="col-md-2 offset-2">
+        <a [routerLink]="['/home/mariage/declaration']" class="btn btn-grd-success"> <i class="fa fa-plus"></i>Nouvelle déclaration</a>
+      </div>
+    </div>
+  </div>
+  
+  <table class="table table-striped text-center">
+      <thead>
+      <tr>
+        <th scope="col" hidden>id</th>
+        <th scope="col">N°</th>
+        <th scope="col">Régistre</th>
+        <th scope="col">Epoux</th>
+        <th scope="col">Epouse</th>
+        <th scope="col">Date de mariage</th>
+        <th scope="col">Lieu de mariage</th>
+        <th scope="col">Voir</th>
+        <th scope="col">Acte</th>
+        <th scope="col">Certificat</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr>
+        <th hidden>1</th>
+        <th>1</th>
+        <th>2022</th>
+        <th>Ibrahima Niang</th>
+        <th>Ndéye Camara</th>
+        <th>03/12/2023</th>
+        <th>Bargny</th>
+        <th>
+            <i class="fa fa-file btn btn-primary"></i>
+        </th>
+        <th>
+            <i class="fa fa-file btn btn-primary"></i>
+        </th>
+        <th>
+            <i class="fa fa-file btn btn-primary"></i>
+        </th>
+      </tr>
+      
+      </tbody>
+  </table>

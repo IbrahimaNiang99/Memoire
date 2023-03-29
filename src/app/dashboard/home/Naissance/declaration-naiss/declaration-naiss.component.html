@@ -1,0 +1,304 @@
+<mat-card class="text-center" style="background-color: rgb(86, 170, 244);">
+    <span style="font-size: 30px; color: white;">Déclaration de naissance</span>
+    <!--span style="font-size: 20px;"><strong>Année</strong> : {{dateDuJour| date:('yyyy')}}</span>
+    <span style="font-size: 20px;"><strong>Régistre N° :</strong> 001</span> -->
+</mat-card>
+<form>
+<mat-card style="font-size: 15px;">
+    <form [formGroup]="enfant">
+    <h2> <i class="fa fa-info-circle" style="color: rgb(23, 83, 187);"></i> Informations sur l'enfant</h2>
+    <div class="row">
+        <div class="col-md-3">
+            <mat-form-field appearance="fill">
+                <mat-label>Type de déclaration</mat-label>
+                <mat-select matNativeControl formControlName="typeDecla" [(ngModel)]="newDeclaration.typeDeclaration">
+                    <mat-option (click)="normale()"  value="Normale">Normale</mat-option>
+                    <mat-option (click)="tardive()"  value="Tardive">Tardive</mat-option>
+                    <mat-option (click)="jugement()" value="Jugement" >Jugement</mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
+        <div class="col-md-3">
+            <mat-form-field appearance="fill">
+                <mat-label>Année</mat-label>
+                <mat-select matNativeControl formControlName="id" name="registre" [(ngModel)]="newDeclaration.registre.id">
+                    <mat-option *ngFor="let r of listeRegistre"  value="{{r.id}}" > {{ r.annee }}</mat-option>
+                    
+                </mat-select>
+            </mat-form-field>
+        </div>
+        <div class="col-md-3">
+            <mat-form-field appearance="fill">
+                <mat-label>Numéro acte</mat-label>
+                <input matInput type="number" [(ngModel)]="newDeclaration.numeroActe" formControlName="numeroActe" required>
+            </mat-form-field>
+        </div>
+    </div>
+    <!-- Type de déclaration choisi -->
+    <div *ngIf="typeDeclaration" class="container  card">
+        <h2> <i class="fa fa-info-circle" style="color: rgb(23, 83, 187);"></i> Informations concernant le jugement</h2>
+
+        <div class="row">
+        <div class="col-md-3">
+                <mat-form-field appearance="fill">
+                    <mat-label>Numéro de jugement </mat-label>
+                    <input matInput [(ngModel)]="newDeclaration.numJugement" formControlName="numeroJgmnt" placeholder="Numéro de jugement" required>
+                </mat-form-field>
+        </div>
+        <div class="col-md-3">
+                <mat-form-field appearance="fill">
+                    <mat-label>Lieu de jugement </mat-label>
+                    <input matInput [(ngModel)]="newDeclaration.lieuJugement" formControlName="lieuJgmnt" placeholder="Lieu de jugement" required>
+                </mat-form-field>
+        </div>
+        <div class="col-md-3">
+                <mat-form-field appearance="fill">
+                    <mat-label>Date du jugement </mat-label>
+                    <input matInput type="date" [(ngModel)]="newDeclaration.dateJugement" formControlName="dateJgmnt" required>
+                </mat-form-field>
+        </div>
+        </div>
+    </div>
+
+    <hr style="background-color: rgb(86, 170, 244); height: 1px;">
+
+    <div class="row">
+        <div class="col-md-4">
+            <mat-form-field appearance="fill">
+                <mat-label>Prénom(s) de l'enfant</mat-label>
+                <input matInput placeholder="Prénom(s) de l'enfant" [(ngModel)]="newDeclaration.declare.prenom" formControlName="prenomEnfant"  required>
+            </mat-form-field>
+        </div>
+        <div class="col-md-4">
+            <mat-form-field appearance="fill">
+                <mat-label>Nom de l'enfant</mat-label>
+                <input matInput placeholder="Nom de l'enfant" [(ngModel)]="newDeclaration.declare.nom" formControlName="nomEnfant" required>
+            </mat-form-field>
+        </div>
+        <div class="col-md-4">
+            <mat-form-field appearance="fill">
+                <mat-label>Date de naissance </mat-label>
+                <input type="date" matInput [(ngModel)]="newDeclaration.declare.dateNaissance" formControlName="dateNaissEnfant" required>
+            </mat-form-field>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-4">
+            <mat-form-field appearance="fill">
+                <mat-label>Lieu de naissance</mat-label>
+                <input matInput placeholder="Lieu de naissance" [(ngModel)]="newDeclaration.declare.lieuNaissance" formControlName="lieuNaissEnfant" required>
+            </mat-form-field>
+        </div>
+        <div class="col-md-4">
+            <mat-form-field appearance="fill">
+                <mat-label>Heure de naissance</mat-label>
+                <input matInput type="time" placeholder="Heure de naissance" [(ngModel)]="newDeclaration.declare.heureNaissance" formControlName="heureNaissEnfant" required>
+            </mat-form-field>
+        </div>
+        <div class="col-md-4">
+            <div class="form-group mt-2">
+                <mat-label class="col-form-label">Sexe</mat-label>
+                <br>
+                <div class="mt-2">
+                  <mat-radio-group aria-label="Select an option" [(ngModel)]="newDeclaration.declare.sexe" formControlName="sexeEnfant">
+                    <mat-radio-button value="H">Homme</mat-radio-button> 
+                    <mat-radio-button value="F">Femme</mat-radio-button>
+                  </mat-radio-group>
+                </div>
+      
+              </div>
+        </div>
+    </div>
+    </form>
+    
+    <hr style="background-color: rgb(86, 170, 244); height: 1px;">
+
+    <div>
+        <mat-stepper [linear]="isLinear" #stepper>
+            <mat-step [stepControl]="structureSanitaire">
+                <form [formGroup]="structureSanitaire">
+                    <ng-template matStepLabel>Structure sanitaire</ng-template>
+                    <h2> <i class="fa fa-info-circle mt-4" style="color: rgb(23, 83, 187);"></i> Informations sur le structure sanitaire</h2>
+                    <div class="row" style="font-size: 15px;">
+                        <div class="col-md-4">
+                            <mat-form-field appearance="fill">
+                                <mat-label>Code</mat-label>
+                                <input matInput placeholder="Code" [(ngModel)]="newDeclaration.structureSanitaire.code" formControlName="code" required>
+                            </mat-form-field>
+                        </div>
+                        <div class="col-md-4">
+                            <mat-form-field appearance="fill">
+                                <mat-label>Nom structure sanitaire</mat-label>
+                                <input matInput placeholder="Nom structure" name="nomStructure" [(ngModel)]="newDeclaration.structureSanitaire.nomStructure"  formControlName="nomStructure" required>
+                            </mat-form-field>
+                        </div>
+                        <div class="col-md-4">
+                            <mat-form-field appearance="fill">
+                                <mat-label>Département</mat-label>
+                                <select matNativeControl formControlName="departement" required  [(ngModel)]="newDeclaration.structureSanitaire.departement"  >
+                                    <option>Rufisque</option>
+                                    <option>Rufisque</option>
+                                    <option>Rufisque</option>
+
+                                </select>
+                                <!-- <input matInput placeholder="Département" [(ngModel)]="newDeclaration.structureSanitaire.departement"  formControlName="departement" required> -->
+                            </mat-form-field>
+                        </div>
+                    </div>
+    
+                    <div>
+                        <button mat-button class="btn btn-primary" matStepperNext>Suivant</button>
+                    </div>
+    
+                </form>
+            </mat-step>
+            <mat-step [stepControl]="pere" label="Père">
+                <form [formGroup]="pere">
+                    <h2> <i class="fa fa-info-circle mt-4" style="color: rgb(23, 83, 187);"></i> Informations sur le père de l'enfant</h2>
+                    
+                        <div class="row mt-4">
+                            <div class="col-md-4">
+                                <mat-form-field appearance="fill">
+                                    <mat-label>Prénom(s) père</mat-label>
+                                    <input matInput placeholder="Prénom du père" [(ngModel)]="newDeclaration.pere.prenom" name="test" formControlName="prenomPere" required>
+                                </mat-form-field>
+                            </div>
+                            <div class="col-md-4">
+                                <mat-form-field appearance="fill">
+                                    <mat-label>Nom père</mat-label>
+                                    <input matInput placeholder="Nom du père" [(ngModel)]="newDeclaration.pere.nom" formControlName="nomPere" required>
+                                </mat-form-field>
+                            </div>
+                            <div class="col-md-4">
+                                <mat-form-field appearance="fill">
+                                    <mat-label>Date de naissance</mat-label>
+                                    <input matInput type="date" [(ngModel)]="newDeclaration.pere.dateNaissance" formControlName="dateNaissPere" required>
+                                </mat-form-field>
+                            </div>
+                        </div>
+                        <div class="row mt-4">
+                            <div class="col-md-4">
+                                <mat-form-field appearance="fill">
+                                    <mat-label>Adresse du père</mat-label>
+                                    <input matInput placeholder="Adresse du père" [(ngModel)]="newDeclaration.pere.adresse" name="test" formControlName="adressePere" required>
+                                </mat-form-field>
+                            </div>
+                            <div class="col-md-4">
+                                <mat-form-field appearance="fill">
+                                    <mat-label>N° CNI père</mat-label>
+                                    <input matInput type="number" placeholder="N° CNI" [(ngModel)]="newDeclaration.pere.cni" formControlName="cniPere" required>
+                                </mat-form-field>
+                            </div>
+                        </div>
+                    <div>
+                      <button mat-button class="btn btn-danger" style="margin-right: 1%;"  matStepperPrevious>Retour</button>
+                      <button mat-button class="btn btn-primary"  matStepperNext>Suivant</button>
+                    </div>
+                </form>
+            </mat-step>
+            <mat-step>
+                  <ng-template matStepLabel>Mère</ng-template>
+                  <h2> <i class="fa fa-info-circle mt-4" style="color: rgb(23, 83, 187);"></i> Informations sur la mère de l'enfant</h2>
+                  <form [formGroup]="mere">
+                    <div class="row mt-4">
+                        <div class="col-md-4">
+                            <mat-form-field appearance="fill">
+                                <mat-label>Prénom(s) mère</mat-label>
+                                <input matInput placeholder="Prénom de la mère" [(ngModel)]="newDeclaration.mere.prenom" name="test" formControlName="prenomMere" required>
+                            </mat-form-field>
+                        </div>
+                        <div class="col-md-4">
+                            <mat-form-field appearance="fill">
+                                <mat-label>Nom mère</mat-label>
+                                <input matInput placeholder="Nom de la mère" [(ngModel)]="newDeclaration.mere.nom" formControlName="nomMere" required>
+                            </mat-form-field>
+                        </div>
+                        <div class="col-md-4">
+                            <mat-form-field appearance="fill">
+                                <mat-label>Date de naissance</mat-label>
+                                <input matInput type="date" formControlName="dateNaissMere" [(ngModel)]="newDeclaration.mere.dateNaissance" required>
+                            </mat-form-field>
+                        </div>
+                    </div>
+                    <div class="row mt-4">
+                        <div class="col-md-4">
+                            <mat-form-field appearance="fill">
+                                <mat-label>Adresse du mère</mat-label>
+                                <input matInput placeholder="Adresse de mère" name="test" [(ngModel)]="newDeclaration.mere.adresse" formControlName="adresseMere" required>
+                            </mat-form-field>
+                        </div>
+                        <div class="col-md-4">
+                            <mat-form-field appearance="fill">
+                                <mat-label>N° CNI mère</mat-label>
+                                <input matInput type="number" placeholder="N° CNI" [(ngModel)]="newDeclaration.mere.cni" formControlName="cniMere" required>
+                            </mat-form-field>
+                        </div>
+                    </div>
+                    <div>
+                        <button mat-button class="btn btn-danger"  style="margin-right: 1%;"   matStepperPrevious>Suivant</button>
+                        <button mat-button class="btn btn-primary"  matStepperNext>Suivant</button>
+                    </div>
+              </form>
+            </mat-step>
+            <mat-step>
+                <ng-template matStepLabel>Déclarant</ng-template>
+                <form [formGroup]="declarant">
+                    <div class="row">
+                        <div class="col-md-1">
+                            <label>Déclarant(e)</label>
+                            <mat-radio-group formControlName="typeDeclarant" [(ngModel)]="newDeclaration.typeDeclarant"  aria-labelledby="example-radio-group-label" class="example-radio-group" >
+                                <br>
+                                <mat-radio-button (click)="declarantIsPere()"  value="pere" >Père </mat-radio-button> <br>
+                                <mat-radio-button (click)="declarantIsMere()"  value="mere" >Mère </mat-radio-button> <br>
+                                <mat-radio-button  (click)="declarantIsAutre()"  value="autre" >Autre</mat-radio-button> <br>
+                            </mat-radio-group>
+                        </div>
+                        <div class="col-md-10 card" style="margin-top: 10%;" *ngIf="typeDeclarant">
+                            <h2> <i class="fa fa-info-circle mt-4" style="color: rgb(23, 83, 187);"></i> Informations </h2>
+                            <div class="row mt-2">
+                                <div class="col-md-3">
+                                    <mat-form-field appearance="fill">
+                                        <mat-label>Prénom</mat-label>
+                                        <input matInput [(ngModel)]="newDeclaration.declarant.prenom" formControlName="prenom"  placeholder="Prénom du décarant" required>
+                                    </mat-form-field>
+                                </div>
+                                <div class="col-md-3">
+                                    <mat-form-field appearance="fill">
+                                        <mat-label>Nom</mat-label>
+                                        <input matInput [(ngModel)]="newDeclaration.declarant.nom" formControlName="nom"   placeholder="Nom du décarant" required>
+                                    </mat-form-field>
+                                </div>
+                                <div class="col-md-3">
+                                    <mat-form-field appearance="fill">
+                                        <mat-label>N° CNI</mat-label>
+                                        <input matInput type="number" [(ngModel)]="newDeclaration.declarant.cni" formControlName="cni"   required>
+                                    </mat-form-field>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <mat-form-field appearance="fill">
+                                        <mat-label>Degres parental</mat-label>
+                                        <input matInput [(ngModel)]="newDeclaration.declarant.degresParental" formControlName="degresParental"   placeholder="Degres parental" required>
+                                    </mat-form-field>
+                                </div>
+                                <div class="col-md-3">
+                                    <mat-form-field appearance="fill">
+                                        <mat-label>Adresse</mat-label>
+                                        <input matInput [(ngModel)]="newDeclaration.declarant.adresse" formControlName="adresse"  placeholder="Adresse" required>
+                                    </mat-form-field>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <button mat-button class="btn btn-danger"  matStepperPrevious>Back</button>
+                        <button mat-button class="btn btn-success" (click)="ajoutNaissance()">Enregistrer</button>
+                    </div>
+            </form>
+          </mat-step>
+        </mat-stepper>
+    </div>
+    
+</mat-card>
+</form>

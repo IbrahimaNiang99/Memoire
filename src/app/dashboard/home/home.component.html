@@ -1,0 +1,263 @@
+<body>
+<!-- Pre-loader start -->
+<div class="theme-loader">
+  <div class="loader-track">
+    <div class="loader-bar"></div>
+  </div>
+</div>
+<!-- Pre-loader end -->
+<div id="pcoded" class="pcoded">
+  <div class="pcoded-overlay-box"></div>
+  <div class="pcoded-container navbar-wrapper">
+    <nav class="navbar header-navbar pcoded-header">
+      <div class="navbar-wrapper">
+        <div class="navbar-logo">
+          <a class="mobile-menu" id="mobile-collapse">
+            <i class="ti-menu"></i>
+          </a>
+          <!--div class="mobile-search">
+            <div class="header-search">
+              <div class="main-search morphsearch-search">
+                <div class="input-group">
+                  <span class="input-group-addon search-close"><i class="ti-close"></i></span>
+                  <input type="text" class="form-control" placeholder="Enter Keyword">
+                  <span class="input-group-addon search-btn"><i class="ti-search"></i></span>
+                </div>
+              </div>
+            </div>
+          </div-->
+          <a>
+            <img class="img-fluid" src="assets/menuTemplate/tempassets/images/logo.png" alt="Theme-Logo" />
+          </a>
+          <a class="mobile-options">
+            <i class="ti-more"></i>
+          </a>
+        </div>
+
+        <div class="navbar-container container-fluid">
+          <ul class="nav-left">
+            <li>
+              <div class="sidebar_toggle"><a href="javascript:void(0)"><i class="ti-menu"></i></a></div>
+            </li>
+            <li class="header-search">
+              <div class="main-search morphsearch-search">
+                <div class="input-group">
+                  <span class="input-group-addon search-close"><i class="ti-close"></i></span>
+                  <input type="text" class="form-control">
+                  <span class="input-group-addon search-btn"><i class="ti-search"></i></span>
+                </div>
+              </div>
+            </li>
+            <li>
+              <a href="#!" onclick="javascript:toggleFullScreen()">
+                <i class="ti-fullscreen"></i>
+              </a>
+            </li>
+          </ul>
+          <ul class="nav-right">
+            <li class="user-profile header-notification">
+              <a>
+                <img src="assets/menuTemplate/tempassets/images/avatar-4.jpg" class="img-radius" alt="User-Profile-Image">
+                <span>John Doe</span>
+                <i class="ti-angle-down"></i>
+              </a>
+              <ul class="show-notification profile-notification">
+                <li>
+                  <a href="user-profile.html">
+                    <i class="ti-user"></i> Profile
+                  </a>
+                </li>
+                <li>
+                  <a href="auth-normal-sign-in.html">
+                    <i class="ti-layout-sidebar-left"></i> Logout
+                  </a>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <div class="pcoded-main-container">
+      <div class="pcoded-wrapper">
+        <nav class="pcoded-navbar">
+          <div class="sidebar_toggle"><a href="#"><i class="icon-close icons"></i></a></div>
+          <div class="pcoded-inner-navbar main-menu">
+
+            <div class="pcoded-search">
+              <span class="searchbar-toggle">  </span>
+              <!--div class="pcoded-search-box ">
+                <input type="text" placeholder="Search">
+                <span class="search-icon"><i class="ti-search" aria-hidden="true"></i></span>
+              </div-->
+            </div>
+            <div class="pcoded-navigatio-lavel" data-i18n="nav.category.navigation">Layout</div>
+            <ul class="pcoded-item pcoded-left-item">
+              <li class="">
+                <a [routerLink]="['accueil']">
+                  <span class="pcoded-micon"><i class="ti-home"></i></span>
+                  <span class="pcoded-mtext" data-i18n="nav.dash.main">Accueil</span>
+                </a>
+              </li>
+              <li class="">
+                <a [routerLink]="['utilisateur/liste']">
+                  <span class="pcoded-micon"><i class="ti-user"></i></span>
+                  <span class="pcoded-mtext" data-i18n="nav.dash.main">Utilisateur</span>
+                </a>
+              </li>
+              <li class="pcoded-hasmenu">
+                <a href="javascript:void(0)">
+                  <span class="pcoded-micon"><i class="ti-layout-grid2-alt"></i></span>
+                  <span class="pcoded-mtext"  data-i18n="nav.basic-components.main">Naissance</span>
+                  <span class="pcoded-mcaret"></span>
+                </a>
+                <ul class="pcoded-submenu">
+                  <li class=" ">
+                    <a [routerLink]="['naissance/declaration']">
+                      <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
+                      <span class="pcoded-mtext" data-i18n="nav.basic-components.breadcrumbs">Déclaration de naissance</span>
+                      <span class="pcoded-mcaret"></span>
+                    </a>
+                  </li>
+                  <li class=" ">
+                    <a [routerLink]="['naissance/liste']">
+                      <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
+                      <span class="pcoded-mtext" data-i18n="nav.basic-components.alert">Liste des actes de naissance</span>
+                      <span class="pcoded-mcaret"></span>
+                    </a>
+                  </li>
+                  <li class=" ">
+                    <a href="color.html">
+                      <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
+                      <span class="pcoded-mtext" data-i18n="nav.basic-components.alert">Liste des actes de naissance</span>
+                      <span class="pcoded-mcaret"></span>
+                    </a>
+                  </li>
+                </ul>
+              </li>
+              <li class="pcoded-hasmenu">
+                <a href="javascript:void(0)">
+                  <span class="pcoded-micon"><i class="ti-heart"></i></span>
+                  <span class="pcoded-mtext"  data-i18n="nav.basic-components.main">Mariage</span>
+                  <span class="pcoded-mcaret"></span>
+                </a>
+                <ul class="pcoded-submenu">
+                  <li class=" ">
+                    <a [routerLink]="['mariage/declaration']">
+                      <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
+                      <span class="pcoded-mtext" data-i18n="nav.basic-components.breadcrumbs">Déclaration de mariage</span>
+                      <span class="pcoded-mcaret"></span>
+                    </a>
+                  </li>
+                  <li class=" ">
+                    <a [routerLink]="['mariage/liste']">
+                      <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
+                      <span class="pcoded-mtext" data-i18n="nav.basic-components.alert">Liste des actes de mariage</span>
+                      <span class="pcoded-mcaret"></span>
+                    </a>
+                  </li>
+                  <li class=" ">
+                    <a href="color.html">
+                      <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
+                      <span class="pcoded-mtext" data-i18n="nav.basic-components.alert">jj</span>
+                      <span class="pcoded-mcaret"></span>
+                    </a>
+                  </li>
+                </ul>
+              </li>
+              <li class="pcoded-hasmenu">
+                <a href="javascript:void(0)">
+                  <span class="pcoded-micon"><i class=""></i></span>
+                  <span class="pcoded-mtext"  data-i18n="nav.basic-components.main">Décès</span>
+                  <span class="pcoded-mcaret"></span>
+                </a>
+                <ul class="pcoded-submenu">
+                  <li class=" ">
+                    <a [routerLink]="['deces/declaration']">
+                      <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
+                      <span class="pcoded-mtext" data-i18n="nav.basic-components.breadcrumbs">Déclaration de décès<samp></samp></span>
+                      <span class="pcoded-mcaret"></span>
+                    </a>
+                  </li>
+                  <li class=" ">
+                    <a [routerLink]="['deces/liste']">
+                      <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
+                      <span class="pcoded-mtext" data-i18n="nav.basic-components.alert">Liste des actes de décès</span>
+                      <span class="pcoded-mcaret"></span>
+                    </a>
+                  </li>
+                  <li class=" ">
+                    <a href="color.html">
+                      <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
+                      <span class="pcoded-mtext" data-i18n="nav.basic-components.alert">jj</span>
+                      <span class="pcoded-mcaret"></span>
+                    </a>
+                  </li>
+                </ul>
+              </li>
+              <li class="">
+                <a [routerLink]="['structuresanitaire']">
+                  <span class="pcoded-micon"><i class="fa fa-medkit"></i></span>
+                  <span class="pcoded-mtext" data-i18n="nav.dash.main">Structure sanitaire</span>
+                </a>
+              </li>
+              <hr class="mt-3">
+              <li class="pcoded-hasmenu">
+                <a href="javascript:void(0)">
+                  <span class="pcoded-micon"><i class="ti-agenda"></i></span>
+                  <span class="pcoded-mtext"  data-i18n="nav.basic-components.main">Pages</span>
+                  <span class="pcoded-mcaret"></span>
+                </a>
+                <ul class="pcoded-submenu">
+                  <li class=" ">
+                    <a [routerLink]="['residence']">
+                      <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
+                      <span class="pcoded-mtext" data-i18n="nav.basic-components.breadcrumbs">Certificat de résidence</span>
+                      <span class="pcoded-mcaret"></span>
+                    </a>
+                  </li>
+                  <li class=" ">
+                    <a [routerLink]="['naissance/liste']">
+                      <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
+                      <span class="pcoded-mtext" data-i18n="nav.basic-components.alert">Attestation de proprieté</span>
+                      <span class="pcoded-mcaret"></span>
+                    </a>
+                  </li>
+                  <li class=" ">
+                    <a href="color.html">
+                      <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
+                      <span class="pcoded-mtext" data-i18n="nav.basic-components.alert">Certificat de célibat</span>
+                      <span class="pcoded-mcaret"></span>
+                    </a>
+                  </li>
+                </ul>
+              </li>
+            </ul>
+          </div>
+        </nav>
+        <div class="pcoded-content" style="background-color: rgb(86, 170, 244); height: 1100px;">
+          <div class="pcoded-inner-content" >
+            <div class="main-body">
+              <div class="page-wrapper">
+                <div class="page-body">
+                  <div class="row">
+                    <div class="col-sm-12">
+                      <div class="card">
+                        <div class="card-block">
+                          <router-outlet></router-outlet>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+</body>
